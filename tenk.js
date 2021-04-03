@@ -10,6 +10,7 @@ var tenk = {
     direction: 0, //top, down, right, left
     fire_direction:[1, 0, 0, 0], //top, down, right, left
     fire: 0,
+    fireTimeOut: 100,
     speed: (Math.floor(tenkSize / 26 * 1000) / 1000)/speed,
 }
 
@@ -70,7 +71,11 @@ function drawTenk() {
 
     collisonTenkAndWall()
 
-    c.fillRect(tenk.x, tenk.y, tenk.width, tenk.height);
+    if(tenk.fire_direction[0] == 1) c.drawImage(texture, 49, 1, 30, 31, tenk.x, tenk.y, tenk.width, tenk.height);
+    else if(tenk.fire_direction[1] == 1) c.drawImage(texture, 30, 39, 30, 31, tenk.x, tenk.y, tenk.width, tenk.height);
+    else if(tenk.fire_direction[2] == 1) c.drawImage(texture, 109, 40, 30, 31, tenk.x, tenk.y, tenk.width, tenk.height);
+    else if(tenk.fire_direction[3] == 1) c.drawImage(texture, 69, 39, 30, 31, tenk.x, tenk.y, tenk.width, tenk.height);
+    
 }
 
 function collisonTenkAndWall() {
@@ -142,5 +147,36 @@ function collisonTenkAndWall() {
     if(tenk.x < 0) tenk.x = 0;
     if(tenk.x + tenk.width > canvas.width) tenk.x = canvas.width - tenk.width;
     if(tenk.y < 0) tenk.y = 0;
-    if(tenk.y + tenk.height > canvas.height) tenk.y = canvas.height - tenk.height;
+    if(tenk.y + tenk.height > canvas.height) tenk.y = canvas.height - tenk.width + 1;
+
+    bot = false, top = false, left= false, right= false;
+
+    if(tenk.x + tenk.width * 4/5 < base.x + base.size/5 
+    && tenk.x + tenk.width > base.x
+    && tenk.y < base.y + base.size
+    && tenk.y + tenk.height > base.y
+        ) left = true;
+
+    if(tenk.x < base.x + base.size
+    && tenk.x + tenk.width / 5 > base.x + base.size * 4/5
+    && tenk.y < base.y + base.size
+    && tenk.y + tenk.height > base.y
+        ) right = true;
+
+    if(tenk.y + tenk.height * 4/5 < base.y + base.size/5
+    && tenk.y + tenk.height > base.y
+    && tenk.x < base.x + base.size
+    && tenk.x + tenk.width > base.x
+        ) top = true;
+
+    if(tenk.y < base.y + base.size
+    && tenk.y + tenk.height / 5 > base.y + base.size * 4/5
+    && tenk.x < base.x + base.size
+    && tenk.x + tenk.width > base.x
+        ) bot = true;
+
+    if (left) tenk.x = base.x - tenk.width;
+    if (right) tenk.x = base.x + base.size;
+    if (top) tenk.y = base.y - tenk.height;
+    if (bot) tenk.y = base.y + base.size - 0.5;
 }

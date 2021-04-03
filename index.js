@@ -8,7 +8,8 @@ const menu = [
 <div>`,
 `<canvas></canvas>`,
 `<p>Help!</p>`,
-`<p>Settings</p>`
+`<p>Settings</p>`,
+`<p>Luzeru</p>`
 ];
 
 function changeS(which) {
@@ -17,9 +18,11 @@ function changeS(which) {
 };
 
 let breakBlock, unBreakBlock, texture;
+var userBullets = [];
+var enemyBullets = [];
 
 texture = new Image();
-texture.src = "./texture.png"
+texture.src = "./texture.webp"
 
 function setup() { //setup function
     rScreen = Math.round(screen.getBoundingClientRect().width); //round currect size of canvas
@@ -33,6 +36,8 @@ function setup() { //setup function
 
     breakBlock = [];
     unBreakBlock = [];
+    userBullets = [];
+    enemyBullets = [];
 
     mapObj(); //in mapfunc.js
 
@@ -44,6 +49,7 @@ function animate() {
     c.clearRect(0, 0, canvas.width, canvas.height);
 
     drawMap();
+    drawBullet();
     drawTenk();
 }
 
