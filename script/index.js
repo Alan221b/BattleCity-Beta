@@ -22,7 +22,10 @@ let userBullets = [];
 let enemyBullets = [];
 
 texture = new Image(); //load image
-texture.src = "../texture/texture1.webp"
+texture.src = "../texture/texture1.webp";
+
+var music = new Audio("../music/music.mp3"); //adding music
+music.volume = 0.1;
 
 function setup() { //setup function
     rScreen = Math.round(screen.getBoundingClientRect().width); //round currect size of canvas
@@ -43,6 +46,7 @@ function setup() { //setup function
 
     mapObj(); //in mapfunc.js
 
+    music.play(); //play music
     animate();
 };
 

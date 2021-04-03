@@ -83,8 +83,11 @@ function CollBulletAndWall() {//Function for collison detection between bullet a
         if(userBullets[i].x < base.x + base.size //detection
         && userBullets[i].x + bulletSize > base.x
         && userBullets[i].y < base.y + base.size
-        && userBullets[i].y + bulletSize > base.y
-            ) changeS(4);
+        && userBullets[i].y + bulletSize > base.y) {
+            changeS(4);
+            music.currentTime = 0;
+            music.pause();
+        }
     }
 
     for (let i = 0; i < deleteBullet.length; i++) { //delete every bullet that had contact with the wall
