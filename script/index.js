@@ -22,7 +22,7 @@ var userBullets = [];
 var enemyBullets = [];
 
 texture = new Image();
-texture.src = "./texture.webp"
+texture.src = "../texture/texture1.webp"
 
 function setup() { //setup function
     rScreen = Math.round(screen.getBoundingClientRect().width); //round currect size of canvas
