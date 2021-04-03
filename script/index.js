@@ -50,7 +50,7 @@ function animate() {
 
     drawMap();
     drawBullet();
-    drawTenk();
+    drawTank();
 }
 
 changeS(0);

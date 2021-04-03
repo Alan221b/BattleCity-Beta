@@ -2,21 +2,21 @@ var bulletTimeOut = 70;
 var bulletID = 1;
 
 function makeBullet() {
-    if(tenk.fire == 1 && tenk.fireTimeOut >= bulletTimeOut) {
+    if(tank.fire == 1 && tank.fireTimeOut >= bulletTimeOut) {
         let bulletSize = (Math.floor(rScreen / 26 * 1000) / 1000) /3;
         userBullets.push
         ({
-            x: tenk.x + tenk.width/2 - bulletSize/2,
-            y: tenk.y + tenk.height/2 - bulletSize/2, 
+            x: tank.x + tank.width/2 - bulletSize/2,
+            y: tank.y + tank.height/2 - bulletSize/2, 
             size: bulletSize, 
-            direction: tenk.fire_direction,
+            direction: tank.fire_direction,
             id: bulletID
         });
 
         bulletID++
-        tenk.fireTimeOut = 0;
+        tank.fireTimeOut = 0;
     }
-    else tenk.fireTimeOut++
+    else tank.fireTimeOut++
 }
 
 function drawBullet() {

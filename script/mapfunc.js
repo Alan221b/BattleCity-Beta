@@ -40,12 +40,12 @@ function mapObj() { //automath add object to array
 
         if(map[i] == 1) breakBlock.push({x, y, id: i, botColl, topColl, leftColl, rightColl});
         else if(map[i] == 2) unBreakBlock.push({x, y, id: i, botColl, topColl, leftColl, rightColl});
-        else if(map[i] == 3) { tenk.x = x, tenk.y = y }
+        else if(map[i] == 3) { tank.x = x, tank.y = y }
         else if(map[i] == 4) { base.x = x, base.y = y, base.size = (Math.floor(rScreen / 26 * 1000) / 1000) * 2 }
     }
 }
 
-function drawMap() { //draw blocks, tenk...
+function drawMap() { //draw blocks, tank...
     let blockSize = (Math.floor(rScreen / 26 * 1000) / 1000);
 
     for (let i = 0; i < breakBlock.length; i++) 
