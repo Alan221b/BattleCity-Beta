@@ -13,7 +13,7 @@ const menu = [ //aray for creating menu, help page, settings, and gameplay page
 `<p>Help!</p>`,
 `<p>
 Music:
-<input type="range" min="0" max="10" value="${music.volume * 10}" id="music">
+<input type="range" min="0" max="10" value="0" id="music">
 
 <button onclick="changeS(0)">Nazad</button>
 </p>`,
@@ -35,6 +35,7 @@ texture.src = "../texture/texture1.webp";
 
 function settings() { //in settings
     let slider = document.getElementById("music");
+    slider.value = music.volume * 10;
 
     slider.oninput = function() {
         music.volume = (this.value / 10);
