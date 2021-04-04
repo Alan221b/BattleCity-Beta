@@ -84,9 +84,9 @@ function CollBulletAndWall() {//Function for collison detection between bullet a
         && userBullets[i].x + bulletSize > base.x
         && userBullets[i].y < base.y + base.size
         && userBullets[i].y + bulletSize > base.y) {
-            changeS(4);
             music.currentTime = 0;
             music.pause();
+            changeS(3);
         }
     }
 

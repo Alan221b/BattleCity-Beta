@@ -6,24 +6,25 @@ music.volume = 0.3;
 const menu = [ //aray for creating menu, help page, settings, and gameplay page
 `<div>
     <button onclick = "changeS(1)">Game</button>
-    <button onclick = "changeS(2)">Help</button>
-    <button onclick = "changeS(3)">Settings</button>
+    <button onclick = "changeS(2)">Settings</button>
 <div>`,
 `<canvas></canvas>`,
-`<p>Help!</p>`,
 `<p>
 Music:
 <input type="range" min="0" max="10" value="0" id="music">
 
-<button onclick="changeS(0)">Nazad</button>
+<button onclick="changeS(0)">Back</button>
 </p>`,
-`<p>Luzeru</p>`
+`<p>
+<p>Score: </p>
+<button onclick="changeS(0)">Home</button>
+</p>`
 ];
 
 function changeS(which) { //currect page
     screen.innerHTML = menu[which];
     if (which == 1) setup();
-    if (which == 3) settings();
+    if (which == 2) settings();
 };
 
 let breakBlock, unBreakBlock, texture; //global variable
