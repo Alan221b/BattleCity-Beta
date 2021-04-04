@@ -1,5 +1,8 @@
 let screen = document.getElementById('screen'), canvas, c, rScreen; //starting
 
+var music = new Audio("../music/music.mp3"); //adding music
+music.volume = 0.3;
+
 const menu = [ //aray for creating menu, help page, settings, and gameplay page
 `<div>
     <button onclick = "changeS(1)">Game</button>
@@ -8,13 +11,19 @@ const menu = [ //aray for creating menu, help page, settings, and gameplay page
 <div>`,
 `<canvas></canvas>`,
 `<p>Help!</p>`,
-`<p>Settings</p>`,
+`<p>
+Music:
+<input type="range" min="0" max="10" value="${music.volume * 10}" id="music">
+
+<button onclick="changeS(0)">Nazad</button>
+</p>`,
 `<p>Luzeru</p>`
 ];
 
 function changeS(which) { //currect page
     screen.innerHTML = menu[which];
     if (which == 1) setup();
+    if (which == 3) settings();
 };
 
 let breakBlock, unBreakBlock, texture; //global variable
@@ -24,8 +33,15 @@ let enemyBullets = [];
 texture = new Image(); //load image
 texture.src = "../texture/texture1.webp";
 
-var music = new Audio("../music/music.mp3"); //adding music
-music.volume = 0.1;
+function settings() { //in settings
+    let slider = document.getElementById("music");
+
+    slider.oninput = function() {
+        music.volume = (this.value / 10);
+        console.log(music.volume);
+    }
+}
+
 
 function setup() { //setup function
     rScreen = Math.round(screen.getBoundingClientRect().width); //round currect size of canvas
