@@ -3,7 +3,7 @@ let screen = document.getElementById('screen'), canvas, c, rScreen; //starting
 var music = new Audio("../music/music.mp3"); //adding music
 music.volume = 0.3;
 
-const menu = [ //aray for creating menu, help page, settings, and gameplay page
+const menu = [ //aray for creating menu, settings, and gameplay page
 `<div>
     <button onclick = "changeS(1)">Game</button>
     <button onclick = "changeS(2)">Settings</button>
@@ -27,12 +27,15 @@ function changeS(which) { //currect page
     if (which == 2) settings();
 };
 
-let breakBlock, unBreakBlock, texture; //global variable
+let breakBlock, unBreakBlock; //global variable
 let userBullets = [];
+let user2Bullets = [];
 let enemyBullets = [];
 
-texture = new Image(); //load image
+var texture = new Image(); //load image
 texture.src = "../texture/texture1.webp";
+
+music.volume = 0;
 
 function settings() { //in settings
     let slider = document.getElementById("music");

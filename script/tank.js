@@ -14,6 +14,18 @@ var tank = {
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
 }
 
+var tank2 = {
+    x: 0, //starter x position of tank
+    y: 0, //starter y position of tank
+    width: 2 * (Math.floor(tankSize / 26 * 1000) / 1000), //width of tank
+    height: 2 * (Math.floor(tankSize / 26 * 1000) / 1000), //
+    direction: 0, //top, down, right, left
+    fire_direction:[0, 1, 0, 0], //top, down, right, left
+    fire: 0,
+    fireTimeOut: 100,
+    speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
+}
+
 window.addEventListener('keydown', (e) => { //looking for keydown
     switch(e.keyCode) {
         case 38: //arrow top
@@ -35,6 +47,26 @@ window.addEventListener('keydown', (e) => { //looking for keydown
         case 32: //space
             tank.fire = 1;
             break;
+
+        case 87: //w
+            tank2.direction = 1;
+            tank2.fire_direction = [1, 0, 0, 0];
+            break;
+        case 83: //s
+            tank2.direction = 2;
+            tank2.fire_direction = [0, 1, 0, 0];
+            break;
+        case 68: //d
+            tank2.direction = 3;
+            tank2.fire_direction = [0, 0, 1, 0];
+            break;
+        case 65: //a
+            tank2.direction = 4;
+            tank2.fire_direction = [0, 0, 0, 1];
+            break;
+        case 69: //e
+            tank2.fire = 1;
+            break;
     };
 });
 
@@ -55,6 +87,22 @@ window.addEventListener('keyup', (e) => { //looking for keyup
         case 32: //space
             tank.fire = 0;
             break;
+
+        case 87: //w
+            tank2.direction = 0;
+            break;
+        case 83: //s
+            tank2.direction = 0;
+            break;
+        case 68: //d
+            tank2.direction = 0;
+            break;
+        case 65: //a
+            tank2.direction = 0;
+            break;
+        case 69: //e
+            tank2.fire = 0;
+            break;
     };
 });
 
@@ -69,16 +117,32 @@ function drawTank() { //main function for draw Tank
         tank.x -= tank.speed;
     }
 
-    collisonTankAndWall()
+    if(tank2.direction == 1){ //top
+        tank2.y -= tank2.speed; 
+    } else if(tank2.direction == 2){ //down
+        tank2.y += tank2.speed;
+    } else if(tank2.direction == 3){ //right
+        tank2.x += tank2.speed;
+    } else if(tank2.direction == 4){ //left
+        tank2.x -= tank2.speed;
+    }
+
+    collisonTankAndWall(tank);
+    collisonTankAndWall(tank2);
 
     if(tank.fire_direction[0] == 1) c.drawImage(texture, 49, 1, 30, 31, tank.x, tank.y, tank.width, tank.height);
     else if(tank.fire_direction[1] == 1) c.drawImage(texture, 30, 39, 30, 31, tank.x, tank.y, tank.width, tank.height);
     else if(tank.fire_direction[2] == 1) c.drawImage(texture, 109, 40, 30, 31, tank.x, tank.y, tank.width, tank.height);
     else if(tank.fire_direction[3] == 1) c.drawImage(texture, 69, 39, 30, 31, tank.x, tank.y, tank.width, tank.height);
+
+    if(tank2.fire_direction[0] == 1) c.drawImage(texture, 49, 1, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 30, 39, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 109, 40, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 69, 39, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
     
 }
 
-function collisonTankAndWall() {//function for tank
+function collisonTankAndWall(tank) {//function for tank
     let bot = -1, top = -1, left= -1, right= -1; //auxiliary variables
 
     //Collison detection between Tank and Breakble walls
