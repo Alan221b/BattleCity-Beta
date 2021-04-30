@@ -139,6 +139,8 @@ function drawTank() { //main function for draw Tank
     else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 80, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
     else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 144, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
     else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 112, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+
+    collTanks();
 }
 
 function collisonTankAndWall(tank) {//function for tank
@@ -285,4 +287,42 @@ function collisonTankAndWall(tank) {//function for tank
         if (right) tank.x = base2.x + base2.size;
         if (top) tank.y = base2.y - tank.height;
         if (bot) tank.y = base2.y + base2.size;
+}
+
+function collTanks() {
+    if(tank.y < tank2.y + tank.height 
+        && tank.y + tank.height/5 > tank2.y + 2*tank.height/5
+        && tank.x < tank2.x + tank.width
+        && tank.x + tank.width > tank2.x
+        ){
+            tank.y += tank.speed;
+            tank2.y -= tank.speed;
+        }
+
+    if(tank2.y < tank.y + tank.height 
+        && tank2.y + tank.height/5 > tank.y + 2*tank.height/5
+        && tank2.x < tank.x + tank.width
+        && tank2.x + tank.width > tank.x
+        ){
+            tank.y -= tank.speed;
+            tank2.y += tank.speed;
+        }
+    
+    if(tank.x < tank2.x + tank.width
+        && tank.x + tank.width/5 > tank2.x + 2*tank.width/5
+        && tank.y < tank2.y + tank.width
+        && tank.y + tank.width > tank2.y
+        ){
+            tank.x += tank.speed;
+            tank2.x -= tank.speed;
+        }
+    
+    if(tank2.x < tank.x + tank.width
+        && tank2.x + tank2.width/5 > tank.x + 2*tank.width/5
+        && tank2.y < tank.y + tank.width
+        && tank2.y + tank.width > tank.y
+        ){
+            tank.x -= tank.speed;
+            tank2.x += tank.speed;
+        }
 }
