@@ -219,67 +219,70 @@ function collisonTankAndWall(tank) {//function for tank
     if(tank.y < 0) tank.y = 0; //top side of canvas
     if(tank.y + tank.height > canvas.height) tank.y = canvas.height - tank.width + 1; //bot side of canvas
 
-    bot = false, top = false, left= false, right= false; //auxiliary variables
+    
+
+    bot = false, top = false, left= false, right= false;
 
     //Collison detection between Tank and Base
     if(tank.x + tank.width * 4/5 < base.x + base.size/5 //left side of base
-    && tank.x + tank.width > base.x
-    && tank.y < base.y + base.size
-    && tank.y + tank.height > base.y
+        && tank.x + tank.width > base.x
+        && tank.y < base.y + base.size
+        && tank.y + tank.height > base.y
         ) left = true;
-
+    
     if(tank.x < base.x + base.size //right side of base
-    && tank.x + tank.width / 5 > base.x + base.size * 4/5 
-    && tank.y < base.y + base.size
-    && tank.y + tank.height > base.y
+        && tank.x + tank.width / 5 > base.x + base.size * 4/5 
+        && tank.y < base.y + base.size
+        && tank.y + tank.height > base.y
         ) right = true;
-
+    
     if(tank.y + tank.height * 4/5 < base.y + base.size/5 //top side of base
-    && tank.y + tank.height > base.y
-    && tank.x < base.x + base.size
-    && tank.x + tank.width > base.x
+        && tank.y + tank.height > base.y
+        && tank.x < base.x + base.size
+        && tank.x + tank.width > base.x
         ) top = true;
-
+    
     if(tank.y < base.y + base.size //bot side of base
-    && tank.y + tank.height / 5 > base.y + base.size * 4/5
-    && tank.x < base.x + base.size
-    && tank.x + tank.width > base.x
+        && tank.y + tank.height / 5 > base.y + base.size * 4/5
+        && tank.x < base.x + base.size
+        && tank.x + tank.width > base.x
         ) bot = true;
-
+    
     //Set new position for tank if tank touch Base
     if (left) tank.x = base.x - tank.width;
     if (right) tank.x = base.x + base.size;
     if (top) tank.y = base.y - tank.height;
     if (bot) tank.y = base.y + base.size - 0.5;
 
+    bot = false, top = false, left= false, right= false;
 
     //Collison detection between Tank and Base2
     if(tank.x + tank.width * 4/5 < base2.x + base2.size/5 //left side of base2
         && tank.x + tank.width > base2.x
         && tank.y < base2.y + base2.size
         && tank.y + tank.height > base2.y
-            ) left = true;
+        ) left = true;
     
-        if(tank.x < base2.x + base2.size //right side of base2
+    if(tank.x < base2.x + base2.size //right side of base2
         && tank.x + tank.width / 5 > base2.x + base2.size * 4/5 
         && tank.y < base2.y + base2.size
         && tank.y + tank.height > base2.y
-            ) right = true;
+        ) right = true;
     
-        if(tank.y + tank.height * 4/5 < base2.y + base2.size/5 //top side of base2
+    if(tank.y + tank.height * 4/5 < base2.y + base2.size/5 //top side of base2
         && tank.y + tank.height > base2.y
         && tank.x < base2.x + base2.size
         && tank.x + tank.width > base2.x
-            ) top = true;
+        ) top = true;
     
-        if(tank.y < base2.y + base2.size //bot side of base2
+    if(tank.y < base2.y + base2.size //bot side of base2
         && tank.y + tank.height / 5 > base2.y + base2.size * 4/5
         && tank.x < base2.x + base2.size
         && tank.x + tank.width > base2.x
-            ) bot = true;
+        ) bot = true;
     
-        //Set new position for tank if tank touch Base2
-        if (left) tank.x = base2.x - tank.width;
+    //Set new position for tank if tank touch Base2
+    if (left) tank.x = base2.x - tank.width;
         if (right) tank.x = base2.x + base2.size;
         if (top) tank.y = base2.y - tank.height;
         if (bot) tank.y = base2.y + base2.size - 0.5;

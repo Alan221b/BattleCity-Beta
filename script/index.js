@@ -102,6 +102,7 @@ function animate() { //main animate function
     drawMap(); //in mapfunc.js
     drawBullet(); //in bullets.js
     drawTank(); //in tank.js
+    //console.log(tank.y)
 }
 
 changeS(0); //set main screen(page)
