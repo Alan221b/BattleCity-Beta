@@ -40,6 +40,7 @@ let breakBlock, unBreakBlock; //global variable
 let userBullets = [];
 let user2Bullets = [];
 let enemyBullets = [];
+let bush = [];
 
 var texture = new Image(); //load image
 texture.src = "../texture/texture.png";
@@ -72,6 +73,7 @@ function setup() { //setup function
     unBreakBlock = [];
     userBullets = [];
     enemyBullets = [];
+    bush = [];
     bulletID = 1;
 
     mapObj(); //in mapfunc.js
@@ -99,9 +101,9 @@ function animate() { //main animate function
         requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
 
-    drawMap(); //in mapfunc.js
     drawBullet(); //in bullets.js
     drawTank(); //in tank.js
+    drawMap(); //in mapfunc.js
 }
 
 changeS(0); //set main screen(page)
