@@ -61,8 +61,8 @@ function drawMap() { //draw blocks, tenk...
         c.drawImage(texture, 32, 0, 16, 16, unBreakBlock[i].x, unBreakBlock[i].y, blockSize, blockSize);
         
     //draw base
-    c.drawImage(texture, 96, 0, 32, 32, base.x, base.y, base.size, base.size);
-    c.drawImage(texture, 96, 0, 32, 32, base2.x, base2.y, base2.size, base2.size);
+    c.drawImage(texture, 208, 0, 32, 32, base.x, base.y, base.size, base.size);
+    c.drawImage(texture, 208, 32, 32, 32, base2.x, base2.y, base2.size, base2.size);
 }
 
 map = [ //map variable for render
@@ -122,10 +122,10 @@ map1  = [ //map variable for render
     0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
     0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
     0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
-    0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0//y: 27
+    0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 1, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0//y: 27
 ]; //1: breakble blocks, 2: unbreakble blocks, 3: tenk possitions, 4: tanks base, 5: tank2, 6: tanks base
 
 
-//map = map1;
+map = map1;

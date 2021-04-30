@@ -40,32 +40,55 @@ function drawBullet() { //main function for draw Bullet
     CollBulletAndWall(userBullets);
     CollBulletAndWall(user2Bullets);
 
-    drawBull(userBullets);
-    drawBull(user2Bullets);
+    drawBull();
+    drawBull2(user2Bullets);
 }
 
 
-function drawBull(userBullets) {
+function drawBull() {
     for (let i = 0; i < userBullets.length; i++) {
         if(userBullets[i].direction[0] == 1){ //go up
             userBullets[i].y -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
-            c.drawImage(texture, 10, 85, 5, 7, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+            c.drawImage(texture, 48, 64, 6, 9, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
         else if(userBullets[i].direction[1] == 1) { //go down
             userBullets[i].y += (Math.floor(rScreen / 26 * 1000) / 1000)/3;
-            c.drawImage(texture, 42, 70, 5, 7, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+            c.drawImage(texture, 64, 64, 6, 9, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
         else if(userBullets[i].direction[2] == 1) { //go right
             userBullets[i].x += (Math.floor(rScreen / 26 * 1000) / 1000)/3;
-            c.drawImage(texture, 143, 52, 7, 5, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+            c.drawImage(texture, 96, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
         else if(userBullets[i].direction[3] == 1) { //go left
             userBullets[i].x -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
-            c.drawImage(texture, 61, 100, 7, 5, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+            c.drawImage(texture, 80, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
         //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);       
     }
 }
+
+function drawBull2(userBullets) {
+    for (let i = 0; i < userBullets.length; i++) {
+        if(userBullets[i].direction[0] == 1){ //go up
+            userBullets[i].y -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
+            c.drawImage(texture, 112, 64, 6, 9, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+        }
+        else if(userBullets[i].direction[1] == 1) { //go down
+            userBullets[i].y += (Math.floor(rScreen / 26 * 1000) / 1000)/3;
+            c.drawImage(texture, 128, 64, 6, 9, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+        }
+        else if(userBullets[i].direction[2] == 1) { //go right
+            userBullets[i].x += (Math.floor(rScreen / 26 * 1000) / 1000)/3;
+            c.drawImage(texture, 160, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+        }
+        else if(userBullets[i].direction[3] == 1) { //go left
+            userBullets[i].x -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
+            c.drawImage(texture, 144, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
+        }
+        //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);       
+    }
+}
+
 
 
 function CollBulletAndWall(Bullets) {//Function for collison detection between bullet and walls

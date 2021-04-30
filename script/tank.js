@@ -130,16 +130,15 @@ function drawTank() { //main function for draw Tank
     collisonTankAndWall(tank);
     collisonTankAndWall(tank2);
 
-    if(tank.fire_direction[0] == 1) c.drawImage(texture, 49, 1, 30, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[1] == 1) c.drawImage(texture, 30, 39, 30, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[2] == 1) c.drawImage(texture, 109, 40, 30, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[3] == 1) c.drawImage(texture, 69, 39, 30, 31, tank.x, tank.y, tank.width, tank.height);
+    if(tank.fire_direction[0] == 1) c.drawImage(texture, 48, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+    else if(tank.fire_direction[1] == 1) c.drawImage(texture, 80, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+    else if(tank.fire_direction[2] == 1) c.drawImage(texture, 144, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+    else if(tank.fire_direction[3] == 1) c.drawImage(texture, 112, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
 
-    if(tank2.fire_direction[0] == 1) c.drawImage(texture, 49, 1, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 30, 39, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 109, 40, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 69, 39, 30, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    
+    if(tank2.fire_direction[0] == 1) c.drawImage(texture, 48, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 80, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 144, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+    else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 112, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
 }
 
 function collisonTankAndWall(tank) {//function for tank
