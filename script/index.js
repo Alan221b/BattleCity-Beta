@@ -42,7 +42,7 @@ let user2Bullets = [];
 let enemyBullets = [];
 
 var texture = new Image(); //load image
-texture.src = "../texture/texture1.webp";
+texture.src = "../texture/texture.png";
 
 music.volume = 0;
 
