@@ -220,7 +220,6 @@ function collisonTankAndWall(tank) {//function for tank
     if(tank.y + tank.height > canvas.height) tank.y = canvas.height - tank.width + 1; //bot side of canvas
 
     
-
     bot = false, top = false, left= false, right= false;
 
     //Collison detection between Tank and Base
@@ -252,7 +251,8 @@ function collisonTankAndWall(tank) {//function for tank
     if (left) tank.x = base.x - tank.width;
     if (right) tank.x = base.x + base.size;
     if (top) tank.y = base.y - tank.height;
-    if (bot) tank.y = base.y + base.size - 0.5;
+    if (bot) tank.y = base.y + base.size;
+
 
     bot = false, top = false, left= false, right= false;
 
@@ -285,5 +285,5 @@ function collisonTankAndWall(tank) {//function for tank
     if (left) tank.x = base2.x - tank.width;
         if (right) tank.x = base2.x + base2.size;
         if (top) tank.y = base2.y - tank.height;
-        if (bot) tank.y = base2.y + base2.size - 0.5;
+        if (bot) tank.y = base2.y + base2.size;
 }

@@ -112,7 +112,6 @@ function CollBulletAndWall(Bullets) {//Function for collison detection between b
             music.pause();
             winner = 'Blue';
             changeS(3);
-            
         }
 
         //Game over, if bullet touch base2
