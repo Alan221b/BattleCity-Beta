@@ -110,8 +110,21 @@ function CollBulletAndWall(Bullets) {//Function for collison detection between b
         && Bullets[i].y + bulletSize > base.y) {
             music.currentTime = 0;
             music.pause();
+            winner = 'Blue';
             changeS(3);
+            
         }
+
+        //Game over, if bullet touch base2
+        if(Bullets[i].x < base2.x + base2.size //detection
+            && Bullets[i].x + bulletSize > base2.x
+            && Bullets[i].y < base2.y + base2.size
+            && Bullets[i].y + bulletSize > base2.y) {
+                music.currentTime = 0;
+                music.pause();
+                winner = 'Yellow';
+                changeS(3);
+            }
     }
 
     for (let i = 0; i < deleteBullet.length; i++) { //delete every bullet that had contact with the wall

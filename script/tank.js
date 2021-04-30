@@ -108,7 +108,7 @@ window.addEventListener('keyup', (e) => { //looking for keyup
 
 function drawTank() { //main function for draw Tank
     if(tank.direction == 1){ //top
-        tank.y -= tank.speed; 
+        tank.y -= tank.speed;
     } else if(tank.direction == 2){ //down
         tank.y += tank.speed;
     } else if(tank.direction == 3){ //right
@@ -251,4 +251,36 @@ function collisonTankAndWall(tank) {//function for tank
     if (right) tank.x = base.x + base.size;
     if (top) tank.y = base.y - tank.height;
     if (bot) tank.y = base.y + base.size - 0.5;
+
+
+    //Collison detection between Tank and Base2
+    if(tank.x + tank.width * 4/5 < base2.x + base2.size/5 //left side of base2
+        && tank.x + tank.width > base2.x
+        && tank.y < base2.y + base2.size
+        && tank.y + tank.height > base2.y
+            ) left = true;
+    
+        if(tank.x < base2.x + base2.size //right side of base2
+        && tank.x + tank.width / 5 > base2.x + base2.size * 4/5 
+        && tank.y < base2.y + base2.size
+        && tank.y + tank.height > base2.y
+            ) right = true;
+    
+        if(tank.y + tank.height * 4/5 < base2.y + base2.size/5 //top side of base2
+        && tank.y + tank.height > base2.y
+        && tank.x < base2.x + base2.size
+        && tank.x + tank.width > base2.x
+            ) top = true;
+    
+        if(tank.y < base2.y + base2.size //bot side of base2
+        && tank.y + tank.height / 5 > base2.y + base2.size * 4/5
+        && tank.x < base2.x + base2.size
+        && tank.x + tank.width > base2.x
+            ) bot = true;
+    
+        //Set new position for tank if tank touch Base2
+        if (left) tank.x = base2.x - tank.width;
+        if (right) tank.x = base2.x + base2.size;
+        if (top) tank.y = base2.y - tank.height;
+        if (bot) tank.y = base2.y + base2.size - 0.5;
 }
