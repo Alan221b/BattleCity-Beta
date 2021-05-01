@@ -42,6 +42,8 @@ let user2Bullets = [];
 let enemyBullets = [];
 let bush = [];
 
+let startTank, startTank2;
+
 var texture = new Image(); //load image
 texture.src = "../texture/texture.png";
 
@@ -85,12 +87,16 @@ function setup() { //setup function
     tank.direction = 0; //top, down, right, left
     tank.fire_direction = [1, 0, 0, 0]; //top, down, right, left
     tank.speed = (Math.floor(tankSize / 26 * 1000) / 1000)/speed;
+    tank.life = 100;
+
+    startTank = tank;
 
     tank2.width = 2 * (Math.floor(tankSize / 26 * 1000) / 1000); //width of tank
     tank2.height = 2 * (Math.floor(tankSize / 26 * 1000) / 1000); //heibht of tank
     tank2.direction = 0; //top, down, right, left
     tank2.fire_direction = [0, 1, 0, 0]; //top, down, right, left
     tank2.speed = (Math.floor(tankSize / 26 * 1000) / 1000)/speed;
+    tank2.life = 100;
 
     music.play(); //play music
     animate();

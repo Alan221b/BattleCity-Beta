@@ -2,7 +2,7 @@ var bulletTimeOut = 70; //TimeOut for making new bullet
 var bulletID = 1; //Bullet id (we use id to delet the bullet)
 
 function makeBullet() { //function for making bullets
-    if(tank.fire == 1 && tank.fireTimeOut >= bulletTimeOut) {
+    if(tank.fire == 1 && tank.fireTimeOut >= bulletTimeOut && tank.life == 100) {
         let bulletSize = (Math.floor(rScreen / 26 * 1000) / 1000) /3; //Bullet size
         userBullets.push
         ({
@@ -18,7 +18,7 @@ function makeBullet() { //function for making bullets
     }
     else tank.fireTimeOut++;
 
-    if(tank2.fire == 1 && tank2.fireTimeOut >= bulletTimeOut) {
+    if(tank2.fire == 1 && tank2.fireTimeOut >= bulletTimeOut && tank.life == 100) {
         let bulletSize = (Math.floor(rScreen / 26 * 1000) / 1000) /3; //Bullet size
         user2Bullets.push
         ({
@@ -42,6 +42,8 @@ function drawBullet() { //main function for draw Bullet
 
     drawBull();
     drawBull2(user2Bullets);
+
+    collBull();
 }
 
 
@@ -160,6 +162,30 @@ function CollBulletAndWall(Bullets) {//Function for collison detection between b
     for (let i = 0; i < deleteWall.length; i++) { //delete every wall that had contact with the bullet
         breakBlock = breakBlock.filter(function(wall) {
             return wall.id != deleteWall[i];
-        })  
+        })
+    }
+}
+
+function collBull() {
+    let deleteBull = [];
+    for (let i = 0; i < userBullets.length; i++) {
+        for (let j = 0; j < user2Bullets.length; j++) {
+            if(userBullets[i].x + userBullets[i].size > user2Bullets[j].x
+            && userBullets[i].x < user2Bullets[j].x + user2Bullets[j].size
+            && userBullets[i].y + userBullets[i].size > user2Bullets[j].y
+            && userBullets[i].y < user2Bullets[j].y + user2Bullets[j].size
+            ){
+                deleteBull.push(userBullets[i].id)
+                deleteBull.push(user2Bullets[j].id)
+            }
+        }
+    }
+    for (let i = 0; i < deleteBull.length; i++) {
+        userBullets = userBullets.filter(function(bullet) { 
+            return bullet.id != deleteBull[i];
+        })
+        user2Bullets = user2Bullets.filter(function(bullet) { 
+            return bullet.id != deleteBull[i];
+        })
     }
 }

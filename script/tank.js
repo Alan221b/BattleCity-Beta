@@ -12,6 +12,7 @@ var tank = {
     fire: 0,
     fireTimeOut: 100,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
+    life: 100,
 }
 
 var tank2 = {
@@ -24,6 +25,7 @@ var tank2 = {
     fire: 0,
     fireTimeOut: 100,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
+    life: 100,
 }
 
 window.addEventListener('keydown', (e) => { //looking for keydown
@@ -107,40 +109,50 @@ window.addEventListener('keyup', (e) => { //looking for keyup
 });
 
 function drawTank() { //main function for draw Tank
-    if(tank.direction == 1){ //top
-        tank.y -= tank.speed;
-    } else if(tank.direction == 2){ //down
-        tank.y += tank.speed;
-    } else if(tank.direction == 3){ //right
-        tank.x += tank.speed;
-    } else if(tank.direction == 4){ //left
-        tank.x -= tank.speed;
-    }
+    if (tank.life == 100){
+        if(tank.direction == 1){ //top
+            tank.y -= tank.speed;
+        } else if(tank.direction == 2){ //down
+            tank.y += tank.speed;
+        } else if(tank.direction == 3){ //right
+            tank.x += tank.speed;
+        } else if(tank.direction == 4){ //left
+            tank.x -= tank.speed;
+        }
 
-    if(tank2.direction == 1){ //top
-        tank2.y -= tank2.speed; 
-    } else if(tank2.direction == 2){ //down
-        tank2.y += tank2.speed;
-    } else if(tank2.direction == 3){ //right
-        tank2.x += tank2.speed;
-    } else if(tank2.direction == 4){ //left
-        tank2.x -= tank2.speed;
-    }
+        collisonTankAndWall(tank);
 
-    collisonTankAndWall(tank);
-    collisonTankAndWall(tank2);
+        if(tank.fire_direction[0] == 1) c.drawImage(texture, 48, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+        else if(tank.fire_direction[1] == 1) c.drawImage(texture, 80, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+        else if(tank.fire_direction[2] == 1) c.drawImage(texture, 144, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+        else if(tank.fire_direction[3] == 1) c.drawImage(texture, 112, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
 
-    if(tank.fire_direction[0] == 1) c.drawImage(texture, 48, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[1] == 1) c.drawImage(texture, 80, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[2] == 1) c.drawImage(texture, 144, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
-    else if(tank.fire_direction[3] == 1) c.drawImage(texture, 112, 0, 31, 31, tank.x, tank.y, tank.width, tank.height);
+        tankBull();
+    }else tank.life++;
 
-    if(tank2.fire_direction[0] == 1) c.drawImage(texture, 48, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 80, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 144, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-    else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 112, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
 
-    collTanks();
+    if (tank2.life == 100){
+        if(tank2.direction == 1){ //top
+            tank2.y -= tank2.speed; 
+        } else if(tank2.direction == 2){ //down
+            tank2.y += tank2.speed;
+        } else if(tank2.direction == 3){ //right
+            tank2.x += tank2.speed;
+        } else if(tank2.direction == 4){ //left
+            tank2.x -= tank2.speed;
+        }
+
+        collisonTankAndWall(tank2);
+
+        if(tank2.fire_direction[0] == 1) c.drawImage(texture, 48, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+        else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 80, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+        else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 144, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+        else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 112, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
+
+        tank2Bull();
+    } else tank2.life++;
+
+    if(tank.life == 100 && tank2.life == 100) collTanks();
 }
 
 function collisonTankAndWall(tank) {//function for tank
@@ -325,4 +337,35 @@ function collTanks() {
             tank.x -= tank.speed;
             tank2.x += tank.speed;
         }
+}
+
+function tankBull() {
+    for (let i = 0; i < user2Bullets.length; i++) {
+        if(user2Bullets[i].x < tank.x + tank.width
+        && user2Bullets[i].x + user2Bullets[i].size > tank.x
+        && user2Bullets[i].y < tank.y + tank.height
+        && user2Bullets[i].y + user2Bullets[i].size > tank.y
+        ){
+            user2Bullets = user2Bullets.filter(function(bullet) { 
+                return bullet != user2Bullets[i];
+            })
+            tank.life = 0;
+            tank = startTank;
+        }
+    }
+}
+
+function tank2Bull() {
+    for (let i = 0; i < userBullets.length; i++) {
+        if(userBullets[i].x < tank2.x + tank2.width
+        && userBullets[i].x + userBullets[i].size > tank2.x
+        && userBullets[i].y < tank2.y + tank2.height
+        && userBullets[i].y + userBullets[i].size > tank2.y
+        ){
+            userBullets = userBullets.filter(function(bullet) { 
+                return bullet != userBullets[i];
+            })
+            tank2.life = 0;
+        }
+    }
 }
