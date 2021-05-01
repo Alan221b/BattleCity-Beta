@@ -1,6 +1,8 @@
 let tankSize = Math.round(screen.getBoundingClientRect().width);
 let finished = true;
-const speed = 10
+const speed = 10;
+let life = 120;
+
 
 var tank = {
     x: 0, //starter x position of tank
@@ -12,7 +14,7 @@ var tank = {
     fire: 0,
     fireTimeOut: 100,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
-    life: 100,
+    life: life,
 }
 
 var tank2 = {
@@ -25,7 +27,7 @@ var tank2 = {
     fire: 0,
     fireTimeOut: 100,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
-    life: 100,
+    life: life,
 }
 
 window.addEventListener('keydown', (e) => { //looking for keydown
@@ -109,7 +111,7 @@ window.addEventListener('keyup', (e) => { //looking for keyup
 });
 
 function drawTank() { //main function for draw Tank
-    if (tank.life == 100){
+    if (tank.life == life){
         if(tank.direction == 1){ //top
             tank.y -= tank.speed;
         } else if(tank.direction == 2){ //down
@@ -131,7 +133,7 @@ function drawTank() { //main function for draw Tank
     }else tank.life++;
 
 
-    if (tank2.life == 100){
+    if (tank2.life == life){
         if(tank2.direction == 1){ //top
             tank2.y -= tank2.speed; 
         } else if(tank2.direction == 2){ //down
@@ -148,11 +150,9 @@ function drawTank() { //main function for draw Tank
         else if(tank2.fire_direction[1] == 1) c.drawImage(texture, 80, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
         else if(tank2.fire_direction[2] == 1) c.drawImage(texture, 144, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
         else if(tank2.fire_direction[3] == 1) c.drawImage(texture, 112, 32, 31, 31, tank2.x, tank2.y, tank2.width, tank2.height);
-
-        tank2Bull();
     } else tank2.life++;
 
-    if(tank.life == 100 && tank2.life == 100) collTanks();
+    if(tank.life == life && tank2.life == life) collTanks();
 }
 
 function collisonTankAndWall(tank) {//function for tank
@@ -350,12 +350,11 @@ function tankBull() {
                 return bullet != user2Bullets[i];
             })
             tank.life = 0;
-            tank = startTank;
+            tank.x = startTank.x;
+            tank.y = startTank.y;
         }
     }
-}
 
-function tank2Bull() {
     for (let i = 0; i < userBullets.length; i++) {
         if(userBullets[i].x < tank2.x + tank2.width
         && userBullets[i].x + userBullets[i].size > tank2.x
@@ -366,6 +365,8 @@ function tank2Bull() {
                 return bullet != userBullets[i];
             })
             tank2.life = 0;
+            tank2.x = startTank2.x;
+            tank2.y = startTank2.y;
         }
     }
 }

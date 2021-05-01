@@ -45,10 +45,10 @@ function mapObj() { //automath add object to array
 
         if(map[i] == 1) breakBlock.push({x, y, id: i, botColl, topColl, leftColl, rightColl}); //adding breakble blocks
         else if(map[i] == 2) unBreakBlock.push({x, y, id: i, botColl, topColl, leftColl, rightColl}); //adding unbreakble blocks
-        else if(map[i] == 3) { tank.x = x, tank.y = y } //adding x and y position for tank
-        else if(map[i] == 5) { tank2.x = x, tank2.y = y } //adding x and y position for tank2
+        else if(map[i] == 3) { tank.x = x, tank.y = y, startTank.y = tank.y, startTank.x = x } //adding x and y position for tank
+        else if(map[i] == 5) { tank2.x = x, tank2.y = y, startTank2.y = tank2.y, startTank2.x = x } //adding x and y position for tank2
         else if(map[i] == 4) { base.x = x, base.y = y, base.size = (Math.floor(rScreen / 26 * 1000) / 1000) * 2 } //adding x and y position for base
-        else if(map[i] == 6) { base2.x = x, base2.y = y, base2.size = (Math.floor(rScreen / 26 * 1000) / 1000) * 2 } //adding x and y position for base2
+        else if(map[i] == 6) { base2.x = x, base2.y = y, base2.size = (Math.floor(rScreen / 26 * 1000) / 1000) * 2} //adding x and y position for base2
         else if(map[i] == 7) bush.push({x, y}); //adding bush
     }
 }

@@ -2,7 +2,7 @@ var bulletTimeOut = 70; //TimeOut for making new bullet
 var bulletID = 1; //Bullet id (we use id to delet the bullet)
 
 function makeBullet() { //function for making bullets
-    if(tank.fire == 1 && tank.fireTimeOut >= bulletTimeOut && tank.life == 100) {
+    if(tank.fire == 1 && tank.fireTimeOut >= bulletTimeOut && tank.life == life) {
         let bulletSize = (Math.floor(rScreen / 26 * 1000) / 1000) /3; //Bullet size
         userBullets.push
         ({
@@ -18,7 +18,7 @@ function makeBullet() { //function for making bullets
     }
     else tank.fireTimeOut++;
 
-    if(tank2.fire == 1 && tank2.fireTimeOut >= bulletTimeOut && tank.life == 100) {
+    if(tank2.fire == 1 && tank2.fireTimeOut >= bulletTimeOut && tank.life == life) {
         let bulletSize = (Math.floor(rScreen / 26 * 1000) / 1000) /3; //Bullet size
         user2Bullets.push
         ({
