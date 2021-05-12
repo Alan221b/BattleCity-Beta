@@ -135,7 +135,7 @@ function drawTank() { //main function for draw Tank
 
     if (tank2.life == life){
         if(tank2.direction == 1){ //top
-            tank2.y -= tank2.speed; 
+            tank2.y -= tank2.speed;
         } else if(tank2.direction == 2){ //down
             tank2.y += tank2.speed;
         } else if(tank2.direction == 3){ //right
@@ -177,7 +177,7 @@ function collisonTankAndWall(tank) {//function for tank
             breakBlock[i].leftColl.y < tank.y + tank.height &&
             breakBlock[i].leftColl.secy > tank.y
             ) left = i;
-        
+
         if (breakBlock[i].rightColl.x < tank.x + (tank.width * 3/47) && //right side of block
             breakBlock[i].rightColl.secx > tank.x &&
             breakBlock[i].rightColl.y < tank.y + tank.height &&
@@ -212,7 +212,7 @@ function collisonTankAndWall(tank) {//function for tank
             unBreakBlock[i].leftColl.y < tank.y + tank.height &&
             unBreakBlock[i].leftColl.secy > tank.y
             ) left = i;
-        
+
         if (unBreakBlock[i].rightColl.x < tank.x + (tank.width * 3/47) && //right side side of block
             unBreakBlock[i].rightColl.secx > tank.x &&
             unBreakBlock[i].rightColl.y < tank.y + tank.height &&
@@ -232,7 +232,6 @@ function collisonTankAndWall(tank) {//function for tank
     if(tank.y < 0) tank.y = 0; //top side of canvas
     if(tank.y + tank.height > canvas.height) tank.y = canvas.height - tank.width + 1; //bot side of canvas
 
-    
     bot = false, top = false, left= false, right= false;
 
     //Collison detection between Tank and Base
@@ -241,25 +240,25 @@ function collisonTankAndWall(tank) {//function for tank
         && tank.y < base.y + base.size
         && tank.y + tank.height > base.y
         ) left = true;
-    
+
     if(tank.x < base.x + base.size //right side of base
         && tank.x + tank.width / 5 > base.x + base.size * 4/5 
         && tank.y < base.y + base.size
         && tank.y + tank.height > base.y
         ) right = true;
-    
+
     if(tank.y + tank.height * 4/5 < base.y + base.size/5 //top side of base
         && tank.y + tank.height > base.y
         && tank.x < base.x + base.size
         && tank.x + tank.width > base.x
         ) top = true;
-    
+
     if(tank.y < base.y + base.size //bot side of base
         && tank.y + tank.height / 5 > base.y + base.size * 4/5
         && tank.x < base.x + base.size
         && tank.x + tank.width > base.x
         ) bot = true;
-    
+
     //Set new position for tank if tank touch Base
     if (left) tank.x = base.x - tank.width;
     if (right) tank.x = base.x + base.size;
@@ -275,25 +274,25 @@ function collisonTankAndWall(tank) {//function for tank
         && tank.y < base2.y + base2.size
         && tank.y + tank.height > base2.y
         ) left = true;
-    
+
     if(tank.x < base2.x + base2.size //right side of base2
         && tank.x + tank.width / 5 > base2.x + base2.size * 4/5 
         && tank.y < base2.y + base2.size
         && tank.y + tank.height > base2.y
         ) right = true;
-    
+
     if(tank.y + tank.height * 4/5 < base2.y + base2.size/5 //top side of base2
         && tank.y + tank.height > base2.y
         && tank.x < base2.x + base2.size
         && tank.x + tank.width > base2.x
         ) top = true;
-    
+
     if(tank.y < base2.y + base2.size //bot side of base2
         && tank.y + tank.height / 5 > base2.y + base2.size * 4/5
         && tank.x < base2.x + base2.size
         && tank.x + tank.width > base2.x
         ) bot = true;
-    
+
     //Set new position for tank if tank touch Base2
     if (left) tank.x = base2.x - tank.width;
         if (right) tank.x = base2.x + base2.size;
@@ -302,7 +301,7 @@ function collisonTankAndWall(tank) {//function for tank
 }
 
 function collTanks() {
-    if(tank.y < tank2.y + tank.height 
+    if(tank.y < tank2.y + tank.height
         && tank.y + tank.height/5 > tank2.y + 2*tank.height/5
         && tank.x < tank2.x + tank.width
         && tank.x + tank.width > tank2.x
@@ -311,7 +310,7 @@ function collTanks() {
             tank2.y -= tank.speed;
         }
 
-    if(tank2.y < tank.y + tank.height 
+    if(tank2.y < tank.y + tank.height
         && tank2.y + tank.height/5 > tank.y + 2*tank.height/5
         && tank2.x < tank.x + tank.width
         && tank2.x + tank.width > tank.x
@@ -319,7 +318,7 @@ function collTanks() {
             tank.y -= tank.speed;
             tank2.y += tank.speed;
         }
-    
+
     if(tank.x < tank2.x + tank.width
         && tank.x + tank.width/5 > tank2.x + 2*tank.width/5
         && tank.y < tank2.y + tank.width
@@ -328,7 +327,7 @@ function collTanks() {
             tank.x += tank.speed;
             tank2.x -= tank.speed;
         }
-    
+
     if(tank2.x < tank.x + tank.width
         && tank2.x + tank2.width/5 > tank.x + 2*tank.width/5
         && tank2.y < tank.y + tank.width
@@ -346,7 +345,7 @@ function tankBull() {
         && user2Bullets[i].y < tank.y + tank.height
         && user2Bullets[i].y + user2Bullets[i].size > tank.y
         ){
-            user2Bullets = user2Bullets.filter(function(bullet) { 
+            user2Bullets = user2Bullets.filter(function(bullet) {
                 return bullet != user2Bullets[i];
             })
             tank.life = 0;
@@ -361,7 +360,7 @@ function tankBull() {
         && userBullets[i].y < tank2.y + tank2.height
         && userBullets[i].y + userBullets[i].size > tank2.y
         ){
-            userBullets = userBullets.filter(function(bullet) { 
+            userBullets = userBullets.filter(function(bullet) {
                 return bullet != userBullets[i];
             })
             tank2.life = 0;

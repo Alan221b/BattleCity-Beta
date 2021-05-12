@@ -8,7 +8,7 @@ function makeBullet() { //function for making bullets
         ({
             x: tank.x + tank.width/2 - bulletSize/2, //x: center of tenk(x)
             y: tank.y + tank.height/2 - bulletSize/2, //y: center of tenk(y)
-            size: bulletSize, 
+            size: bulletSize,
             direction: tank.fire_direction, //where the created bullet will go
             id: bulletID //id of bullet
         });
@@ -24,7 +24,7 @@ function makeBullet() { //function for making bullets
         ({
             x: tank2.x + tank2.width/2 - bulletSize/2, //x: center of tenk(x)
             y: tank2.y + tank2.height/2 - bulletSize/2, //y: center of tenk(y)
-            size: bulletSize, 
+            size: bulletSize,
             direction: tank2.fire_direction, //where the created bullet will go
             id: bulletID //id of bullet
         });
@@ -65,7 +65,7 @@ function drawBull() {
             userBullets[i].x -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
             c.drawImage(texture, 80, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
-        //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);       
+        //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);
     }
 }
 
@@ -87,7 +87,7 @@ function drawBull2(userBullets) {
             userBullets[i].x -= (Math.floor(rScreen / 26 * 1000) / 1000)/3;
             c.drawImage(texture, 144, 64, 7, 6, userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size)
         }
-        //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);       
+        //c.fillRect(userBullets[i].x, userBullets[i].y, userBullets[i].size, userBullets[i].size);
     }
 }
 
@@ -119,14 +119,14 @@ function CollBulletAndWall(Bullets) {//Function for collison detection between b
 
         //Collison detection between bullet and canvas walls
 
-        //add bullets id in array for delete, if touch left side of canvas: 
+        //add bullets id in array for delete, if touch left side of canvas:
         if (Bullets[i].x < 0) deleteBullet.push(Bullets[i].id);
-        //add bullets id in array for delete, if touch right side of canvas: 
-        if (Bullets[i].x > canvas.width) deleteBullet.push(Bullets[i].id); 
+        //add bullets id in array for delete, if touch right side of canvas:
+        if (Bullets[i].x > canvas.width) deleteBullet.push(Bullets[i].id);
         //add bullets id in array for delete, if touch top side of canvas:
-        if (Bullets[i].y < 0) deleteBullet.push(Bullets[i].id); 
+        if (Bullets[i].y < 0) deleteBullet.push(Bullets[i].id);
         //add bullets id in array for delete, if touch bot side of canvas:
-        if (Bullets[i].y > canvas.height) deleteBullet.push(Bullets[i].id); 
+        if (Bullets[i].y > canvas.height) deleteBullet.push(Bullets[i].id);
 
         //Game over, if bullet touch base
         if(Bullets[i].x < base.x + base.size //detection
@@ -152,10 +152,10 @@ function CollBulletAndWall(Bullets) {//Function for collison detection between b
     }
 
     for (let i = 0; i < deleteBullet.length; i++) { //delete every bullet that had contact with the wall
-        userBullets = userBullets.filter(function(bullet) { 
+        userBullets = userBullets.filter(function(bullet) {
             return bullet.id != deleteBullet[i];
         })
-        user2Bullets = user2Bullets.filter(function(bullet) { 
+        user2Bullets = user2Bullets.filter(function(bullet) {
             return bullet.id != deleteBullet[i];
         })
     }
@@ -181,10 +181,10 @@ function collBull() {
         }
     }
     for (let i = 0; i < deleteBull.length; i++) {
-        userBullets = userBullets.filter(function(bullet) { 
+        userBullets = userBullets.filter(function(bullet) {
             return bullet.id != deleteBull[i];
         })
-        user2Bullets = user2Bullets.filter(function(bullet) { 
+        user2Bullets = user2Bullets.filter(function(bullet) {
             return bullet.id != deleteBull[i];
         })
     }
