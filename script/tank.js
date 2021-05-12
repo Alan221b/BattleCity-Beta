@@ -12,7 +12,7 @@ var tank = {
     direction: 0, //top, down, right, left
     fire_direction:[1, 0, 0, 0], //top, down, right, left
     fire: 0,
-    fireTimeOut: 100,
+    fireTimeOut: 70,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
     life: life,
 }
@@ -25,7 +25,7 @@ var tank2 = {
     direction: 0, //top, down, right, left
     fire_direction:[0, 1, 0, 0], //top, down, right, left
     fire: 0,
-    fireTimeOut: 100,
+    fireTimeOut: 70,
     speed: (Math.floor(tankSize / 26 * 1000) / 1000)/speed,
     life: life,
 }
